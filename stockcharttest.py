@@ -24,7 +24,7 @@ def fetch_stock_data(ticker, period, interval):
 # Process data to ensure it is timezone-aware and has the correct format
 def process_data(data):
     if data.index.tzinfo is None:
-        data.index = data.index.tz_localize('UTC')
+        data.index = data.index.tz_localize('EST')
     data.index = data.index.tz_convert('US/Eastern')
     data.reset_index(inplace=True)
     data.rename(columns={'Date': 'Datetime'}, inplace=True)
